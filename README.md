@@ -34,3 +34,5 @@ This is a monitoring component for spring-cloud applications. This component add
     
 now goto:  [http://localhost:8095](http://localhost:8095), and check the RAM Usage of your applications. 
 Both monitor-server and monitor-client will report to monitor-server their status.
+![Monitor Dashboard](https://github.com/alwasdev/spring-cloud-monitor/blob/master/examples/image.png?raw=true)
+
