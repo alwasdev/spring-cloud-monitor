@@ -32,5 +32,5 @@ This is a monitoring component for spring-cloud applications. This component add
     cd examples/monitor-server
     mvn clean instal spring-boot:run
     
-now goto: http://localhost:8095, and check the RAM Usage of your applications. 
+now goto:  [http://localhost:8095](http://localhost:8095), and check the RAM Usage of your applications. 
 Both monitor-server and monitor-client will report to monitor-server their status.
