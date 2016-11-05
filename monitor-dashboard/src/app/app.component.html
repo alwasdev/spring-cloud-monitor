@@ -1,0 +1,14 @@
+<div class="mdl-grid">
+  <div class="mdl-cell mdl-cell--3-col" *ngFor='let snapshot of snapshots'>
+    <div class="mdl-grid">
+      <div class="mdl-cell mdl-cell--12-col center">
+        {{snapshot.application}}
+      </div>
+      <div class="mdl-cell mdl-cell--12-col">
+        <div style="display: block;">
+          <canvas baseChart [data]="[snapshot.usedMemory, snapshot.freeMemory]" [labels]="['used','free']" [chartType]="'doughnut'"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
