@@ -1,5 +1,7 @@
 package examples.monitoring.com;
 
+import monitoring.com.client.EnableMonitorClient;
+import monitoring.com.server.controller.EnableMonitorServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -12,7 +14,8 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @EnableEurekaClient
-@monitoring.com.server.controller.EnableMonitorServer
+@EnableMonitorServer
+@EnableMonitorClient
 public class MonitorServerApplication {
 
     public static void main(String[] args) {
