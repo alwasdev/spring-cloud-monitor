@@ -36,3 +36,8 @@ now goto:  [http://localhost:8095](http://localhost:8095), and check the RAM Usa
 Both monitor-server and monitor-client will report to monitor-server their status.
 ![Monitor Dashboard](https://github.com/alwasdev/spring-cloud-monitor/blob/master/examples/image.png?raw=true)
 
+# Trouble shoot
+For me on a different system, the services register with wrong address, so the services can't speak with each other.
+For this purpose you should use:   
+
+     eureka.instance.preferIpAddress=true
