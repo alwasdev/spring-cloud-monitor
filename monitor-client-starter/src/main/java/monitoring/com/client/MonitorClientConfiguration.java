@@ -1,23 +1,27 @@
-package monitoring.com;
+package monitoring.com.client;
 
-import monitoring.com.model.MonitorSnapshot;
+import monitoring.com.client.model.MonitorSnapshot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.client.actuator.HasFeatures;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.context.annotation.Import;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.scheduling.annotation.SchedulingConfiguration;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Date;
 import java.util.Set;
 
 /**
- * Created by AWA on 04.11.2016.
+ * Created by AWA on 06.11.2016.
  */
 @Configuration
-@EnableScheduling
-public class MonitorClientConfig {
+@Import(SchedulingConfiguration.class)
+public class MonitorClientConfiguration extends WebMvcConfigurerAdapter {
 
     private static Runtime runtime = Runtime.getRuntime();
 
@@ -27,6 +31,11 @@ public class MonitorClientConfig {
 
     @Value("${spring.application.name}")
     private String appName;
+
+    @Bean
+    public HasFeatures monitorClientFeature() {
+        return HasFeatures.namedFeature("Monitor Client", MonitorClientConfiguration.class);
+    }
 
     @Scheduled(fixedDelay = 10000)
     public void publishUpdates() {
@@ -57,5 +66,3 @@ public class MonitorClientConfig {
         return monitorSnapshot;
     }
 }
-
-

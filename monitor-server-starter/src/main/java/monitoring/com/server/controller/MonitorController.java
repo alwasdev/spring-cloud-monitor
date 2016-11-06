@@ -1,7 +1,6 @@
-package monitoring.com.controller;
+package monitoring.com.server.controller;
 
-import monitoring.com.model.MonitorSnapshot;
-import org.springframework.beans.factory.annotation.Autowired;
+import monitoring.com.server.model.MonitorSnapshot;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -20,10 +19,14 @@ import java.util.Map;
 @Controller
 @EnableScheduling
 public class MonitorController implements MonitorApi {
-    @Autowired
-    SimpMessagingTemplate simpMessagingTemplate;
 
     Map<String, MonitorSnapshot> monitorSnapshotMap = new HashMap<>();
+
+    private SimpMessagingTemplate simpMessagingTemplate;
+
+    public MonitorController(SimpMessagingTemplate simpMessagingTemplate) {
+        this.simpMessagingTemplate = simpMessagingTemplate;
+    }
 
     @Override
     public ResponseEntity<Map> pushSnapshot(@Validated @RequestBody MonitorSnapshot monitorSnapshot) {

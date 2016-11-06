@@ -1,4 +1,4 @@
-package monitoring.com.socket;
+package monitoring.com.server.socket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

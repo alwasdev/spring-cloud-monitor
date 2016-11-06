@@ -1,6 +1,7 @@
-package monitoring.com.controller;
+package monitoring.com.server.controller;
 
-import monitoring.com.model.MonitorSnapshot;
+
+import monitoring.com.server.model.MonitorSnapshot;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,5 +16,5 @@ import java.util.Map;
 public interface MonitorApi {
 
     @RequestMapping(path = "/push", method = RequestMethod.POST)
-    ResponseEntity<Map>  pushSnapshot(@RequestBody MonitorSnapshot monitorSnapshot);
+    ResponseEntity<Map> pushSnapshot(@RequestBody MonitorSnapshot monitorSnapshot);
 }

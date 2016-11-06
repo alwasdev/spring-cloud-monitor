@@ -1,4 +1,4 @@
-package monitoring.com;
+package examples.monitoring.com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 @EnableEurekaClient
+@monitoring.com.server.controller.EnableMonitorServer
 public class MonitorServerApplication {
 
     public static void main(String[] args) {

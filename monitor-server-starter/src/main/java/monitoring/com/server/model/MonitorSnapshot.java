@@ -1,4 +1,4 @@
-package monitoring.com.model;
+package monitoring.com.server.model;
 
 import javax.validation.constraints.NotNull;
 
