@@ -1,14 +1,19 @@
-<div class="mdl-grid">
-  <div class="mdl-cell mdl-cell--3-col" *ngFor='let snapshot of snapshots'>
-    <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--12-col center">
-        {{snapshot.application}}
-      </div>
-      <div class="mdl-cell mdl-cell--12-col">
-        <div style="display: block;">
-          <canvas baseChart [data]="[snapshot.usedMemory, snapshot.freeMemory]" [labels]="['used','free']" [chartType]="'doughnut'"></canvas>
-        </div>
-      </div>
-    </div>
-  </div>
+<nav class="w3-sidenav" style="width:70px">
+    <a routerLink="/" routerLinkActive="active"><i class="fa fa-home w3-xxlarge"></i></a>
+    <a routerLink="/hystrix" style="padding-left:19px" outerLinkActive="active"> <i class="fa w3-xxlarge"><b>H</b></i></a>
+    <a routerLink="/zipkin" style="padding-left:19px" routerLinkActive="active"> <i class="fa w3-xxlarge"><b>Z</b></i></a>
+</nav>
+<div style="margin-left:70px">
+    <header class="w3-container w3-green">
+        <span class="w3-opennav w3-xlarge w3-hide-large" onclick="w3_open()">&#9776;</span>
+        <h2>Dashboard</h2>
+    </header>
+
+    <router-outlet></router-outlet>
+
+
+    <footer class="w3-container w3-green">
+        <h5>Footer</h5>
+        <p>Footer information goes here</p>
+    </footer>
 </div>

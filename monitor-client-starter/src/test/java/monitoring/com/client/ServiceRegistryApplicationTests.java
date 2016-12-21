@@ -7,10 +7,10 @@
 //
 //@RunWith(SpringRunner.class)
 //@SpringBootTest
-//public class ServiceRegistryApplicationTests {
+//static class ServiceRegistryApplicationTests {
 //
 //	@Test
-//	public void contextLoads() {
+//	static void contextLoads() {
 //	}
 //
 //}

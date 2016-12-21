@@ -8,176 +8,7 @@
   <script src="//cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js"></script>
-  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.amber-pink.min.css" />
-  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
-  <!--<script>
-
-var stompClient = null;
-
-var labels = [];
-
-var usedMemoryDataset = {
-  label: 'Used Memory',
-  data: [],
-  backgroundColor: 'rgba(75, 192, 192, 0.2)',
-  borderColor: 'rgba(75, 192, 192, 1)',
-  borderWidth: 1
-};
-var freeMemoryDataset = {
-  label: 'Free Memory',
-  data: [],
-  backgroundColor: 'rgba(255, 99, 132, 0.2)',
-  borderColor: 'rgba(255,99,132,1)',
-  borderWidth: 1
-};
-var commitedMemoryDataset = {
-  label: 'Commited Memory',
-  data: [],
-  backgroundColor: 'rgba(54, 162, 235, 0.2)',
-  borderColor: 'rgba(54, 162, 235, 1)',
-  borderWidth: 1
-};
-var maxMemoryDataset = {
-  label: 'Max Memory',
-  data: [],
-  backgroundColor: 'rgba(255, 206, 86, 0.2)',
-  borderColor: 'rgba(255, 206, 86, 1)',
-  borderWidth: 1
-};
-var freeMemory = 0;
-var usedMemory = 0;
-
-function setConnected(connected) {
- 
-  if (connected) {
-    $("#conversation").show();
-  }
-  else {
-    $("#conversation").hide();
-  }
-  $("#greetings").html("");
-}
-
-function connect() {
-  var socket = new SockJS('http://localhost:8095/monitor');
-  stompClient = Stomp.over(socket);
-  stompClient.connect({}, function (frame) {
-    setConnected(true);
-    console.log('Connected: ' + frame);
-    stompClient.subscribe('/topic/greetings', function (greeting) {
-
-      var info = JSON.parse(greeting.body);
-      if (labels.length > 50) {
-        labels = [];
-        usedMemoryDataset.data = [];
-        freeMemoryDataset.data = [];
-        maxMemoryDataset.data = [];
-        commitedMemoryDataset.data = [];
-      }
-
-      usedMemoryDataset.data.push(info.usedMemory);
-      freeMemoryDataset.data.push(info.freeMemory);
-      maxMemoryDataset.data.push(info.maxMemory);
-      commitedMemoryDataset.data.push(info.commitedMemory);
-
-      freeMemory = info.freeMemory;
-      usedMemory = info.usedMemory;
-
-      labels.push(new Date(JSON.parse(greeting.body).timestamp).toUTCString());
-
-      showGreeting(greeting.body);
-    });
-  });
-}
-
-function disconnect() {
-  if (stompClient != null) {
-    stompClient.disconnect();
-  }
-  setConnected(false);
-  console.log("Disconnected");
-}
-
-function sendName() {
-  stompClient.send("/app/hello", {}, JSON.stringify({ 'name': $("#name").val() }));
-}
-
-
-
-function initChart() {
-  var ctx = document.getElementById("myChart");
-  var ctx2 = document.getElementById("myPieChart");
-  ctx.width = 100;
-  ctx.height = 100;
-  ctx2.width = 100;
-  ctx2.height = 100;
-  var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: labels,
-      datasets: [usedMemoryDataset, freeMemoryDataset, commitedMemoryDataset]
-    },
-    options: {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      },
-      animation: false,
-      tooltips: {
-        enabled: true,
-        mode: 'single',
-        backgroundColor: 'rgba(0,0,0,0.8)'
-      }
-    }
-  });
-
-  var myPieChart = new Chart(ctx2, {
-    type: 'pie',
-    data: {
-      labels: [
-        "Free",
-        "Used",
-        "Commited"
-      ],
-      datasets: [
-        {
-          data: [freeMemory, usedMemory],
-          backgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-    },
-    options: {
-      animation: false,
-      tooltips: {
-        enabled: true,
-        mode: 'single',
-        backgroundColor: 'rgba(0,0,0,0.8)'
-      }
-    }
-  });
-}
-
-function showGreeting(message) {
-  $("#greetings").replaceWith("<div id=\"greetings\"><tr><td>" + message + "</td></tr></div>");
-  initChart();
-}
-
-$(function () {
-  connect();
-  Chart.defaults.global.tooltips.enabled = true;
-});
-        </script>-->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
@@ -185,5 +16,37 @@ $(function () {
 <body>
   <app-root>Loading...</app-root>
 </body>
+
+<script>
+function w3_open() {
+ 
+  document.getElementById("mySidenav").style.width = "15%";
+  document.getElementById("mySidenav").style.display = "block";
+  document.getElementById("openNav").style.display = 'none';
+}
+function w3_close() {
+ 
+  document.getElementById("mySidenav").style.display = "none";
+  document.getElementById("openNav").style.display = "inline-block";
+}
+</script>
+
+<script>
+// Filter
+function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    div = document.getElementById("myDIV");
+    a = div.getElementsByTagName("a");
+    for (i = 0; i < a.length; i++) {
+        if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
+            a[i].style.display = "";
+        } else {
+            a[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 </html>

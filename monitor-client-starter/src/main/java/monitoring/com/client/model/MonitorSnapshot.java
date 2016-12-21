@@ -18,6 +18,16 @@ public class MonitorSnapshot {
 
     private long timestamp;
 
+    private String hystrixUrl;
+
+    public String getHystrixUrl() {
+        return hystrixUrl;
+    }
+
+    public void setHystrixUrl(String hystrixUrl) {
+        this.hystrixUrl = hystrixUrl;
+    }
+
     public long getTimestamp() {
         return timestamp;
     }

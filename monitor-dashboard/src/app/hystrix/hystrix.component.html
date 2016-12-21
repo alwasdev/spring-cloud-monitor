@@ -1,0 +1,19 @@
+<ul class="w3-navbar w3-light-grey w3-border">
+
+  <li>
+    <div class="w3-dropdown-hover">
+      <a href="#"><i class="fa fa-search"></i></a>
+      <div class="w3-dropdown-content w3-card-2 w3-light-grey" id="myDIV">
+        <input class="w3-input w3-padding" type="text" placeholder="Search.." id="myInput" onkeyup="myFunction()">
+        <a *ngFor='let service of services' (click)="hystrix(service.hystrixUrl)">{{service.application}}</a>
+      </div>
+    </div>
+  </li>
+  <li class="w3-right"><a href="#"><i class="fa fa-cog"></i></a></li>
+</ul>
+
+<div class="w3-container">
+  <div class="embed-container">
+    <iframe width="100%" height="100%" [src]="url" frameborder="0"></iframe>
+  </div>
+</div>

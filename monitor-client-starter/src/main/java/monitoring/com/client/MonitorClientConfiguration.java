@@ -1,5 +1,6 @@
 package monitoring.com.client;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import monitoring.com.client.model.MonitorSnapshot;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,8 @@ import org.springframework.scheduling.annotation.SchedulingConfiguration;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 import java.util.Set;
 
@@ -32,12 +35,16 @@ public class MonitorClientConfiguration extends WebMvcConfigurerAdapter {
     @Value("${spring.application.name}")
     private String appName;
 
+    @Value("${server.port}")
+    private int port;
+
     @Bean
     public HasFeatures monitorClientFeature() {
         return HasFeatures.namedFeature("Monitor Client", MonitorClientConfiguration.class);
     }
 
     @Scheduled(fixedDelay = 10000)
+    @HystrixCommand(fallbackMethod = "test")
     public void publishUpdates() {
         MonitorSnapshot monitorSnapshot = createMonitorSnapshot();
 
@@ -62,7 +69,16 @@ public class MonitorClientConfiguration extends WebMvcConfigurerAdapter {
         monitorSnapshot.setMaxMemory(maxMemory);
         monitorSnapshot.setUsedMemory(usedMemory);
         monitorSnapshot.setTimestamp(timestamp);
+        try {
+            monitorSnapshot.setHystrixUrl("http://"+InetAddress.getLocalHost().getHostName() + ":" + port + "/hystrix.stream");
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
+        }
 
         return monitorSnapshot;
+    }
+
+    public void test() {
+
     }
 }

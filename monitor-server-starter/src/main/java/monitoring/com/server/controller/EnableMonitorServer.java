@@ -1,6 +1,9 @@
 package monitoring.com.server.controller;
 
+import org.springframework.cloud.netflix.hystrix.EnableHystrix;
+import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.context.annotation.Import;
+import zipkin.server.EnableZipkinServer;
 
 import java.lang.annotation.*;
 
@@ -11,5 +14,8 @@ import java.lang.annotation.*;
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
 @Import(MonitorServerConfiguration.class)
+@EnableHystrix
+@EnableHystrixDashboard
+@EnableZipkinServer
 public @interface EnableMonitorServer {
 }

@@ -1,7 +1,8 @@
 spring:
   application:
     name: monitor-client
-
+  zipkin:
+    baseUrl: http://localhost:8095
 server:
   port: ${PORT:8080}
 
@@ -9,3 +10,4 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+

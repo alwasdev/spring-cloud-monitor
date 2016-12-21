@@ -1,0 +1,21 @@
+<ul class="w3-navbar w3-light-grey w3-border">
+  <li class="w3-right"><a href="#" (click)="isShown=!isShown"><i class="fa fa-cog"></i></a></li>
+</ul>
+
+<div class="w3-container">
+  <app-jolokia-query-dialog [isShown]="isShown" (close)="isShown=!isShown"></app-jolokia-query-dialog>
+  <div class="w3-row">
+    <div class="w3-col m3 l3" *ngFor='let snapshot of snapshots'>
+      <div class="w3-row">
+        <div class="w3-col m12 l12 center">
+          {{snapshot.application}}
+        </div>
+        <div class="w3-col m12 l12">
+          <div style="display: block;">
+            <canvas baseChart [data]="[snapshot.usedMemory, snapshot.freeMemory]" [labels]="['used','free']" [chartType]="'doughnut'"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

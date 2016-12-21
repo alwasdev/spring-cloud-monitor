@@ -43,11 +43,16 @@
             <artifactId>monitor-server-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>monitoring.com</groupId>
-            <artifactId>monitor-client-starter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>be.ordina</groupId>-->
+            <!--<artifactId>microservices-dashboard-server</artifactId>-->
+            <!--<version>1.0.1</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>monitoring.com</groupId>-->
+            <!--<artifactId>monitor-client-starter</artifactId>-->
+            <!--<version>0.0.1-SNAPSHOT</version>-->
+        <!--</dependency>-->
     </dependencies>
 
     <dependencyManagement>
@@ -70,6 +75,15 @@
             </plugin>
         </plugins>
     </build>
-
+    <repositories>
+        <repository>
+            <id>oss-snapshots</id>
+            <name>JFrog OSS Snapshots</name>
+            <url>https://oss.jfrog.org/simple/oss-snapshot-local/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
 </project>
